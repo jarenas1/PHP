@@ -1,0 +1,40 @@
+//FUNCIONAMIENTO
+
+Laravel tiene un único punto de acceso a nuestra aplicación, el cual se encuenta en public y es el index.php, el resto de recursos no son accesibles desde el navegador
+
+Para poder mostrar más contenidos de nuestra pagina debemos crear un enrutado.
+
+//CREACION DE RUTAS
+
+El archivo encargadod de gestionar estas rutas es ek web.php que se encuentra en routes, este se encarga de recibir una petición y mostrar el contenido
+
+Dentro de este archivo debemos crear métodos, los cuales manejen estas rutas, este método recibirá una ruta especifica, puede ser un "/", y una función la cual debe retornar la vista
+
+y básicamente asi se crea el enrutado, podemos tener infinitos métodos que devuelvan infinitas vistas
+
+
+//PETICIONES
+
+Tenemos las peticiones normales del crud, GET, PUT, POST, DELETE, y PATCH
+
+Usamos GET cuando deseamos obtener y mostrar una vista
+
+
+//PARAMETROS
+
+Podemos usarlos para pasar el id del articulo que deseamos y evitar crear un método para cada articulo, estos parámetros se mandan dentro de la ruta DENTRO DE LLAVES, y dentro de la función, vamos a definir una variable con el mismo nombre que se indico dentro de las llaves, y ya dentro de la función podemos utilizar el valor como deseemos
+(VER EJEMPLO)
+
+//notas
+- Las rutas pueden tener varios parámetros separados por /, "hola/{var1}/{var2}"
+
+- Los parámetros también pueden ser opcionales, indicándolo con un ? {var1?}, y en los parámetros de la función, donde se va a almacenar la variable debemos inicializarla como nulll para que no quede vacio function($var1=null) 
+
+
+
+//CONCIDERACIONES
+
+Se debe tener mucho cuidado el orden en el que se declara la ruta, ya que si por ejemplo tenemos de primera una rita la cual es juan/{variable}, y abajo creamos otra que es juan/jose
+cuando laravel cargue las rutas de arriba a abajo, puede asumir que la palabra jose es el parámetro de la primera ruta, más no el complemento de la ruta de abajo
+
+Para arreglarlo, simplemente cambiamos el orden de los endpoints
