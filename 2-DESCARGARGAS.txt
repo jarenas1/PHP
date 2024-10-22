@@ -1,0 +1,78 @@
+INSTALACION:
+
+Instalar XAMPP
+
+Instalar composer
+
+Todos estos anteriores desde la página de cada uno
+
+Luego ingresamos a la carpeta donde deseamos crear nuestros proyectos desde powerShell, se aconseja crear dentro de XAMPP/htdocs y creamos una carpeta para almacenar nuestros proyectos, ya que apache esta instalado dentro de ese entorno
+
+Una vez creada la carpeta desde powerSell creamos dentro de esta nuestros proyectos
+
+composer create-project laravel/laravel projectName o de la otra manera
+
+
+crear proyecto;
+
+composer create-project laravel/laravel projectName
+
+//PERMITE CREAR PROYECTOS POR MEDIO DE UNA INTERFAZ Y PODEMOS PERSONALIZARLO
+
+composer global require laravel/installer // Instalador
+laravel new projectName //crear proyecto
+
+
+Instalación: instala laravel por medio de powerShell con el comnado 
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://php.new/install/windows'))
+
+
+
+------------------------------------------------
+
+
+Trabajaremos con mvc
+
+el tipado no funciona
+
+Es compilado, no interpretado
+
+
+-------------------------------------
+
+//ESTRUCTURA BASICA
+
+/App   controladores
+
+//Models   entidades
+
+//providers   lo que se puede usar al crear el programa
+
+//boostrap  Configuración para crear tema de rutas sobre las que se trabajara, excepciones y servicios
+
+//config   Configuración de todo el programa db,mail,sevicios,cache…
+
+//database  
+
+//routes  debemos registrar cada ruta de nuestra pagina
+
+//storage    NO GUARDAR DATOS ACA
+
+//test 
+
+
+------------------------------------
+
+php artisan serve    //CORRER APLICACION SIN XAMPP
+
+
+para correr la aplicación con XAMPP, debemos encenderlo y entrar al navegador, ponemos localhost, el cual nos va a enviar a la vista de XAMPP
+
+Una vez estamos ahí simplemente ponemos la ruta de nuestro proyecto y asi se ejecutara el "index.php" /laravel/nameProject/public
+
+
+------------------------------
+
+//CREACION DE LOGIN
+composer require laravel/jestream
+php artisan jetstream:install livewire
