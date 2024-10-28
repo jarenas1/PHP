@@ -1,0 +1,69 @@
+MIGRACIONES:
+
+A la hora de crear una tabla, la idea es crear las tablas desde php, no desde el workbench, para esto usamos migraciones, las cuales nos permiten crear las tablas desde laravel, por asi decirlo, es las entidades que mapeamos en springboot, solo que en este caso las entidades van separadas de las tablas.
+
+Vienen por defecto 3 migraciones en nuestro proyecto.
+
+Estas están definidas dentro del método créate de la clase Schema, definimos como primer parámetro el nombre de la tabla y después un callBack, y dentro declaramos las columnas de nuestra tabla, indicando sus caracterisitas
+
+EJEMPLO BASICO DE UNA COLUMNA
+
+$table->TypeVariable("name")->Characteristics();
+
+
+-- ELIMINAR TABLAS:
+
+En cada archivo de migración, cada tablas va a tener 2 métodos void, up y down, en up creamos las tablas, y en down creamos la elimincacion de las mismas, ejemplo:
+
+Schema::dropIfExist("tableName")
+
+
+
+Luego de tener este método, debemos lanzar el comando php artisan migrate:RollBack, el cual llama el método down
+
+-- TENER EN CUENTA QUE MIGRATE TIENE VARIIOS METODOS
+
+
+
+----------------------------------
+
+CREAR UNA MIGRACION:
+
+Para esto usamos el comando php artisan make:migration, con esto se nos crearan automáticamente nuestros métodos up y down
+
+PERO PODEMOS HACERLO MÁS RAPIDO usando el comando
+ php artisan make:migration create_TABLENAME_table
+ESTE CREARA UNA MIGRACION Y CONTENDRA LA ESTRUCTURA BASICA DE LA TABLA
+
+y luego de crearla las migramos
+
+
+
+CONSIDERACIONES
+
+Cuando migramos algo, se asocian esas tablas a un bloque, el cual indica que todas estas se crearon en una migración, si después creamos otras tablas estas nuevas tablas al migrarlas se crearan en otro bloque, por ejemplo bloque 1 y después bloque 2, por ende si deseamos hacer un rollback lo que va a hacer es que va a eliminar el ultimo bloque 
+
+
+COMANDOS DE MIGRATE
+
+cuando lo dejamos solo, solo añade las nuevas tablas
+
+cuando añadimos rolback borra el cultimo bloque
+
+cuando añadimos refresh borra todo y vuelve a empezar
+
+cuando añadimos fresh se eliminaran solo las tablas que creamos en laravel y no las de la db
+
+
+
+SI DESEAMOS ACTUALIZAR UNA TABLA SIN PERDER REGISTROS:
+
+Para esto debemos pedir una migración la cual haga referencia a la tabla a modificar:
+
+php artisan make:migration add_columnName_to_tableName_table
+
+Una vez tengamos esta migración podemos ver que esta referenciada a nuestra tabla, simplemente en el método up creamos la o las columnas que deseemos añadir o en su defecto en el otro de eliminar implementamos las columnas a eliminar
+
+Para finalizar migramos con php artisan migrate y ahora la tabla está modificada sin tener que borrar registros
+
+O llamamos al rollback para borrar
