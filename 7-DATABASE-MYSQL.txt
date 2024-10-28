@@ -1,0 +1,9 @@
+CONECCION A MYSQL
+
+Cuando creamos un proyecto en laravel, se crea automaricamente con SQLite a no se de que se modifique
+
+Para modificarla vamos al archivo .env y nodificamos las credenciales para MySQL
+
+Una vez realizado esto ejecutamos las migraciones con php artisan serve
+
+Una migración son unas tablas que ya están creadas, y debemos ejecutarlas en nuestra base de datos para que laravel pueda funcionar
