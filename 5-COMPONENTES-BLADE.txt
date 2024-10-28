@@ -1,0 +1,67 @@
+COMPONENTES:
+
+Muchas veces en nuestras paginas tenemos elementos que se repiten mucho, por lo cual podemos generar plantillas con esos elementos para poderlas llamar cuando necesitemos dicho elemento, esto se llama componentes
+
+CREAR COMPONENTES:
+
+Vamos a resources/views y creamos la carpeta components, dentro de esta crearemos un archivo para cada componente que deseemos crear y pegamos dentro su código
+
+
+
+LLAMAR COMPONENTES:
+
+Para llamar nuestros componentes unsamos la etiqueta <x-ComponentName></x-ComponentName>
+
+
+
+CONTENIDO VARIABLE EN COMPONENTES
+
+Para esto debemos definir una variable en nuestro componente, en la parte donde deseemos que sea variable así {{NameVar}}
+
+Y luego donde lo llamemos, debemos indicar dentro de las 2 etiquetas el contenido de esa variable, debemos indicarlo de la siguiente manera:
+
+ETIQUETA PRINCIPAL
+	<x-slot name="nombreDeLaVar">
+		CONTENIDO DE LA VARIABLE
+	</x-slot>
+ETIQUETA PRINCIPAL
+
+Y podríamos hacerlo así con N cantidad de variables que reciba nuestro componente
+
+
+CONSIDERACIONES:
+
+Si no le pasamos un valor a la variable, no se mostrara el componente, por ende es bueno que cada que creemos una variable en un componente, pongamos un valor predefinido usando un operador ternarios así varName ?? null;
+
+
+
+----------------------------------------
+
+
+PASAR CLASES AL COMPONENTE PARA DEFINIR SU ESTULO:
+
+Le pasamos a la etiqueta padre, es decir, a la que contiene el nombre del componente un nuevo atributo así: nombre ="value"
+
+
+Luego en el componente llamamos una directiva de ley llamada type:
+
+@props([nombreAtributoQueSePaso, …, ...])
+
+
+Luego abrimos código php, usando @php, en este realizaremos un switch usando el prop que pasamos, y en este vamos a comparar el valor que trae el prop y crearemos una variable que contenga las clases necesarias para poner ese color
+
+Luego pasamos esa variable al componente
+
+
+-----------------------------------------
+
+NOOOTAS::  Lo visto anteriormente fueron componentes Anonimos, ya que estos no dependen de una clase.
+
+
+--------------------
+
+COMPONENTES DE CLASE:
+
+-- CREAR COMPONENTE DESDE TERMINAR:  php artisan make:component name
+
+El componente de clase debe tener un archivo php aparte donde ira toda la lógica del componente, y luego se conectara con el otro archivo .Blade, en el cual estará el HTML del componente
