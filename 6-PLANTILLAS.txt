@@ -1,0 +1,36 @@
+PLANTILLAS
+
+Cuando tenemos una pagina web, podemos ver que tenemos mucho código repetido, por ejemplo en el header, footer. Mientras que el Main se va cambiando, para esto sirven las plantillas
+
+
+CREACION:
+
+Creamos un componente en el cual incluiremos toda la estructura, este será el layout, en este realizaremos el encabezado de HTML, metadata, etc.. y donde queramos pintar el contenido, simplemente ponemos {{$slot}}, y llamamos el layout dentro de nuestro componente y lo envolvemos con este usando <x-layoutname>
+
+
+CREACION OTRO METODO:
+
+Ahora veremos como crearlo mediante plantillas aun asi no se usen tanto ahora:
+
+Dentro de views/layouts creamos app-Blade.php
+
+Dentro de esta plantilla indicaremos el contenido variable con @yield("AnyName"), 
+
+luego para insertar contenido en esta plantilla vamos a lo que deseemos insertar(componente) y ponemos en la parte superior del documento @extends(nombrePlantillaCreada)
+
+Y envolvemos el contenido a insertar dentro de @section("nombreQueSeDeclaroDentroDeLaPlantillaEn@Yield") 
+content   
+@endsection
+
+
+--
+
+Usando layouts también podemos definit varios yield, por ejemplo el titulo del navegador, y luego en el componente creamos otro section y lo referenciamos a ese yield con el nombre
+
+
+
+NOTAS:
+
+Si declaramos un yield, podemos pasar un segundo parámetro, el cual será el valor por defecto
+
+@Yield("reference","defaultValue")
