@@ -1,0 +1,36 @@
+FACTORIES:    //DEBEN LLAMARSE modelNameFactory
+
+Un factoire es una forma de ingresar datos masivamente, indicándole a php que en el campo nombre, email, etc... sea el quien cree los campos
+
+ESTOS SE CREAN DESDE LA CARPETA FACOTRIES, USANDO LA LIBRERIA FAKE() QUE NO DA DATOS FALSOS
+
+
+CREAR UN NUEVO SEEDER:
+
+php artisan make:factory Name
+
+Luego vamos al método definition
+
+Luego seteamos los valores falsos dentro del return
+
+"Attribute"=> $this->faker->TypeOfFaker,
+
+…...
+
+
+USARLOS:
+
+Vamos al seeder, método run y llamamos nuestro modelo y al factory
+
+User::factory(10)->créate    //El 10 es el numero de registros
+
+
+Es importante nombrarlos como dice la primera linea, ya que aca no estamos indicando que factory usarl, php lo define según la convención mencionada, en este caso deduce que es el factory de user
+
+
+
+CONSIDERACIONES 
+
+CADA FACTORY DEBE SER LLAMADO EN SU SEEDER
+
+Y DESPUES CADA SEEDER DEBE SER LLAMADO POR EL SEEDER PRINCIPAL
