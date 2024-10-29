@@ -1,0 +1,42 @@
+//objetivo de los controladores
+
+Cuando creamos las rutas, no deseamos que se nos devuelvan solo mensajes si no que nos conectemos a bases de datos y devolvamos html´s
+
+Para esto existen los controladores, en estos se creara toda la lógica necesaria
+
+
+//Creación
+
+Para crearlos Laravel proporciona comandos, los cuales podemos usar desde powerShell:
+
+Comandos:
+
+php artisan make:controller NameController   //CREA UN CONTROLADOR  (dentro de app/http)
+
+
+
+//IMPLEMENTACION
+
+Como podemos ver se nos creo una clase, dentro de la cual trabajaremos, creando métodos para devolver los datos deseados, también podemos ver algo llamado namespace, el cual es como por así decirlo el nombre por el cual lo podremos llamar desde otros archivos
+
+1. creamos el método que devuelve lo que deseamos
+
+2. nos vamos a las rutas y llamamos este controlador usando su namespace y el nombre del controller así:   use namespace\controllerName
+
+3. luego de "importarlo" lo debemos asociar a una ruta, entonces eliminamos la función, dejando la url para acceder y en lugar de la función ponemos [NombreControlador::class,"MetodoDelControlador"]
+
+
+//Controladores que reciben parámetros
+
+Creamos la ruta normalmente con el parámetro dentro de las llaves y cuando creemos el método debemos decirle que recibirá un parámetro, este debe llamarse igual que como se llama el parámetro de la url
+
+//implementación
+
+Creamos la ruta, y separado por , llamamos al controlador y el automáticamente va a recibir los parámetros ya que se definieron en la creación del metodo
+
+
+//CONSIDERACIONES
+
+Podemos crear varios métodos dentro del mismo controlador
+
+Si tenemos un controlador con un único método, podemos nombrar el método como ___invoke y simplemente cuando lo llamemos en una ruta [], no debemos indicar el nombre del método, solo 

@@ -1,0 +1,53 @@
+ELOQUENT
+
+Este es el ORM de laravel, nos ayuda a trabajar con la base de datos, nos ofrece métodos los cuales realizan acciones en la base de datos y evita que usemos sql
+
+Este se maneja por medio de los modelos:
+
+
+CREAR UN MODELO:
+
+php artisan make:model nameModel
+
+Dentro de esta clase, primero diremos que tabla va a manejar: protected $table= tableName
+
+
+Automáticamente esta entidad va a contener los atributos de la tabla de la base de datos, por ende a la hora de instanciarla podremos pasarle esos atrbutos para crear la instancia 
+
+
+
+---------------------------------------
+
+
+Podemos hacer gran cantidad de cosas:
+
+-- CREAR: construimos un objeto y guardamos con ::sabe
+
+-- ACTUALIZAR:  Buscar un post en especifico con el find(id) o con el where("ColumnName","ColumnValue")->first();
+ el cual nos trae un registro por columna personalizada, y el first indica que sea el primero
+
+Luego le seteamos el valor que deseemos modificar a este objeto que traimos usando ->, lo cual es como una referencia a ese atributo 
+
+Por ultimo le damos sabe
+
+--TREAER UNO:  usamos el método find(id), o si deseamos buscar por otra propiedad usamos el 
+where(colunName,ValueTofind)->first
+
+
+--TRAER VARIOS:  usamos el método ::all(), este se debe almacenar en una variable simple, y se guardara como un array automáticamente
+
+también podemos traerlos usando el where para traer los datos que cumplan ciertas condiciones, Post::where(columna, condición, valor)->get   en conidicon pordemos indicar que el valor de la columna sea mayor a el valor, menor, etc
+
+El get se pasa para que traiga todos los valores que cumplan la condición, el first se uso pa traer solo el primero
+
+
+--TRAER POR ORDEN: para esto usamos ::orderBy("columna", desc/asc)->get(); esto nos permite ordenar por columna y con get traer
+
+
+--TRAER SOLO COLUMNAS DESEADAS:  Para esto tenemos que usar los métodos vistos anteriormente para traer registros dependiendo del caso, además debemos añadir antes del get() o el fist(), otro método ->select(column1,column2,column3, ...) esto nos permitirá traer las columnas deseadas
+
+También podemos añadir otro método llamado ->take(#) en el cual podemos decir cuantos datos deseamos traer
+
+
+--ELIMINAR  para esto buscamos el registo por id con ::find(), luego verificamos si existe, y luego por medio del objeto traído le pasamos el método ->delete(); 
+
