@@ -1,0 +1,14 @@
+CASTING:
+
+Para castear un valor, simplemente dentro del modelo creamos un método protected llamado casts() y debe devolver un array
+
+protected function casts(): array{}
+
+luego dentro retornamos un array, en el cual pasamos el nombre del campo a castear => "tipo de dato deseado",
+
+
+return["id"=> "string"] //VA A TOMAR EL ID COMO STRING, Ahora cada que llaemos un registro de la base de datos, podremos acceder a los métodos de string para el campo de id
+
+
+EJEMPLO: En el ejemplo creamos una columna llamada published_at, el cual era de formato timestamp, por lo cual nos debería dejar acceder a ciertos métodos para formatear la fecha
+pero no se sabe por que lo toma como un string, asi que nos fuimos al modelo y creamos el casteo

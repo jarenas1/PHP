@@ -1,0 +1,25 @@
+SEEDERS:
+
+Los seeders son unos registros predeterminados para almacenar en las tablas
+
+
+CREAR UN NUEVO ARCHIVO SEEDER:
+
+php artisan make:seeder Name, de esta forma podremos tener mas ordenados los seeders
+
+
+CREAR EL SEEDER:
+
+vamos a NUESTRO ARCHIVO DE SEEDER Y en el método run, en su interior creamos una instancia de la tabla(entidad), seteamos los valores y pasamos save() con $user->save(), PODEMOS USAR CICLOS PARA ENVIAR MUCHIS DATOS
+
+
+PASAR TODO A SATABASESEEDER
+
+Debemos pasar todos los seeders creados a la clase de seeders principal, usando $this->call([Seeder1::class, Seeder2::class])
+
+
+EJECUTAR:
+
+php artisan db:seed
+
+
